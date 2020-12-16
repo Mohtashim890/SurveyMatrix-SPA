@@ -1,0 +1,46 @@
+<sb-layout-dashboard
+    ><sb-dashboard-head title="Admin Panel"></sb-dashboard-head
+    ><sb-card
+        ><div class="card-body">
+            The table lists all users along with their roles. Admin can modify user's Roles
+        </div>
+    </sb-card>
+    <form>
+        <div class="form-group form-inline">
+            Full text search:
+            <input class="form-control ml-2" type="text" name="searchTerm" />
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col" sbSortable="username">
+                        <span>Username</span>
+                    </th>
+                    <th scope="col" sbSortable="userRoles">
+                        <span>User Roles</span>
+                    </th>
+                    <th scope="col" sbSortable="editRoles">
+                        <span>Edit Roles</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <th scope="row">{{ user.id }}</th>
+                    <td>{{ user.username }}</td>
+                    <td> {{ user.roles }}</td>
+                    <td>
+                        <div
+                            class="btn btn-primary text-center"
+                            style="height: 50px; width: 100px"
+                            (click)="editRolesModal(user)"
+                        >
+                            Edit Roles
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</sb-layout-dashboard>
